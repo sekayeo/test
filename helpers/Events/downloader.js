@@ -69,29 +69,11 @@ export default async function on({ cht, Exp, store, ev, is }) {
         if (type == 'image') {
             for (let image of data.media) {
                 await Exp.sendMessage(id, { image: { url: image.url } }, { quoted: cht })
-                await Exp.sendMessage(id, { audio: { url: data.audio.url }, mimetype: "audio/mpeg"}, { quoted: cht })
             }
         } else if (type == 'video') {
             await Exp.sendMessage(id, { video: { url: data.media[1].url } }, { quoted: cht })
         }
-    })
-    
-    ev.on({ 
-      cmd: ['tiktoksound', 'ttsound'], 
-      listmenu: ['tiktoksound'], 
-      tag: 'downloader',
-      urls: {
-        formats: ["tiktok","douyin"],
-        msg: true
-      },
-      energy: 5
-    }, async ({ urls }) => {
-        const _key = keys[sender]
-        await cht.edit(infos.messages.wait, _key)
-        let data = (await fetch(api.xterm.url + "/api/downloader/tiktok?url=" +urls[0] +"&key="+ api.xterm.key).then(a => a.json())).data
-        
-        await cht.edit(infos.messages.sending, _key)
-         await Exp.sendMessage(id, { audio: { url: data.audio.url }, mimetype: "audio/mpeg"}, { quoted: cht })
+        await Exp.sendMessage(id, { audio: { url: data.audio.url }, mimetype: "audio/mpeg"}, { quoted: cht })
     })
 
     ev.on({ 
