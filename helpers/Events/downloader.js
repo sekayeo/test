@@ -99,7 +99,7 @@ export default async function on({ cht, Exp, store, ev, is }) {
             api.xterm.key
         ).then((a) => a.json())
       ).data;
-      let duration = data.trackDuration
+      /*let duration = data.trackDuration
       let m = Math.floor((duration % 3600) / 60);
       let s = duration % 60;
       let text = '*!-======[ Spotify🎵 ]======-!*\n';
@@ -130,7 +130,7 @@ export default async function on({ cht, Exp, store, ev, is }) {
             newsletterName: 'sekayeo',
             newsletterJid: '120363322142730469@newsletter',
           },
-        },
+        },*/
       };
       await Exp.sendMessage(id, info, { quoted: cht });
       await cht.edit(infos.messages.sending, _key);
